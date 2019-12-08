@@ -35,6 +35,19 @@ namespace WebApi.Controllers
             return Ok(book);
         }
 
+        // GET: api/BookByName/5
+        [ResponseType(typeof(Book))]
+        public IHttpActionResult GetBookByName(string Name)
+        {
+            Book book = db.Book.Find(Name);
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(book);
+        }
+
         // PUT: api/Book/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutBook(int id, Book book)
